@@ -41,11 +41,30 @@ router.get("/:id", (req,res) => {
 
 // [Post], creates post with info from req.body and returns new post
 
+router.post("/:id", (req,res) => {
+    const newPost = req.body;
+        if (!newPost.title || !newPost.contents){
+            res.status(400).json("Please provide title and contents for the post")
+        } else {
+            Posts.insert(newPost)
+                .then(post => {
+                    res.status(201).json(post)
+                })
+                .catch(error => {
+                    res.status(500).json({
+                        message: "There was an error while saving the post to the database"
+                    })
+                })
+        }
+        })
 
 // [Put], updates post with the specified ID using data from req.body and returns the modified post
 
 
-// [Delete], returns array of all the comment objects associated with the specified post ID
+// [Delete],
+
+
+// [Get], returns array of all the comment objects associated with the specified post ID
 
 
 
