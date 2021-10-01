@@ -6,4 +6,4 @@ const server = express();
 server.use(express.json());
 server.use("/api/posts",postsRouter);
 
-module.export = server;
+module.exports = server;

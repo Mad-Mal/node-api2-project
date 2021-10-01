@@ -7,6 +7,17 @@ const router = express.Router();
 
 // [Get], returns array of all the post objects
 
+router.get("/", (req,res) => {
+    Posts.find()
+        .then(posts => {
+            res.status(200).json(posts);
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: "The posts information could not be retrieved" 
+            })
+        })
+})
 
 // [Get], returns post object with the specified ID
 
